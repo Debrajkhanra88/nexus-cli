@@ -26,7 +26,7 @@ pub async fn start_authenticated_workers(
     orchestrator: OrchestratorClient,
     num_workers: usize,
     shutdown: broadcast::Receiver<()>,
-    environment: Environment,
+    environment: &Environment,
     client_id: String,
 ) -> (mpsc::Receiver<Event>, Vec<JoinHandle<()>>) {
     let mut join_handles = Vec::new();
@@ -116,7 +116,7 @@ pub async fn start_authenticated_workers(
 pub async fn start_anonymous_workers(
     num_workers: usize,
     shutdown: broadcast::Receiver<()>,
-    environment: Environment,
+    environment: &Environment,
     client_id: String,
 ) -> (mpsc::Receiver<Event>, Vec<JoinHandle<()>>) {
     let mut join_handles = Vec::new();
