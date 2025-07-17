@@ -131,7 +131,7 @@ pub fn start_workers(
 pub async fn start_anonymous_workers(
     num_workers: usize,
     shutdown: broadcast::Receiver<()>,
-    environment: &Environment,
+    environment: Environment,
     client_id: String,
 ) -> (mpsc::Receiver<Event>, Vec<JoinHandle<()>>) {
     let (event_sender, event_receiver) = mpsc::channel::<Event>(100);
