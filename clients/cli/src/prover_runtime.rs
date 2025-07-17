@@ -136,7 +136,7 @@ pub async fn start_anonymous_workers(
 
     // Start anonymous workers
     let (anonymous_event_receiver, anonymous_handles) =
-        offline::start_anonymous_workers(num_workers, shutdown, environment, client_id).await;
+        offline::start_anonymous_workers(num_workers, shutdown, environment.clone(), client_id.clone()).await;
     join_handles.extend(anonymous_handles);
 
     // Forward events from anonymous workers to our event sender
