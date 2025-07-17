@@ -60,7 +60,7 @@ pub fn start_workers(
     results_sender: mpsc::Sender<(Task, Proof)>,
     event_sender: mpsc::Sender<Event>,
     shutdown: broadcast::Receiver<()>,
-    environment: Environment,
+    environment: &Environment,
     client_id: String,
 ) -> (Vec<mpsc::Sender<Task>>, Vec<JoinHandle<()>>) {
     let mut senders = Vec::with_capacity(num_workers);
