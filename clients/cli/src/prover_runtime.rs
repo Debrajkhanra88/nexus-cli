@@ -65,7 +65,7 @@ pub async fn start_authenticated_workers(
                 event_sender,
                 shutdown,
                 enqueued_tasks,
-                environment,
+                &environment,
                 client_id,
             )
             .await;
@@ -81,7 +81,7 @@ pub async fn start_authenticated_workers(
         result_sender,
         event_sender.clone(),
         shutdown.resubscribe(),
-        environment,
+        &environment,
         client_id.clone(),
     );
     join_handles.extend(worker_handles);
@@ -103,7 +103,7 @@ pub async fn start_authenticated_workers(
         event_sender.clone(),
         shutdown.resubscribe(),
         successful_tasks.clone(),
-        environment,
+        &environment,
         client_id,
     )
     .await;
