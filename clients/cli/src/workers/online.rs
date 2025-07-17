@@ -95,7 +95,7 @@ pub async fn fetch_prover_tasks(
     event_sender: mpsc::Sender<Event>,
     mut shutdown: broadcast::Receiver<()>,
     recent_tasks: TaskCache,
-    environment: Environment,
+    environment: &Environment,
     client_id: String,
 ) {
     let mut state = TaskFetchState::new();
@@ -576,7 +576,7 @@ pub async fn submit_proofs(
     event_sender: mpsc::Sender<Event>,
     mut shutdown: broadcast::Receiver<()>,
     successful_tasks: TaskCache,
-    environment: Environment,
+    environment: &Environment,
     client_id: String,
 ) -> JoinHandle<()> {
     tokio::spawn(async move {
